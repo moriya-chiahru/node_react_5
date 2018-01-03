@@ -1,5 +1,7 @@
-//278P
+//280P
 //ルーティングを設定
+//正規表現を使ったルーティングのアクセス
+
 //Expressのモジュールを取り込んで作成
 const express = require('express')
 const app = express()
@@ -13,12 +15,10 @@ app.get('/', (req, res, next) => {
 })
 
 // サイコロへのアクセス
-app.get('/dice/6', (req, res) => {
-  res.send('今回の値は...' + dice(6))
-})
-
-app.get('/dice/12', (req, res) => {
-  res.send('今回の値は...' + dice(12))
+//正規表現:num
+app.get('/dice/:num', (req, res) => {
+  //取得する場合は req.params.num
+  res.send('今回の値は...' + dice(req.params.num))
 })
 
 //サイコロのランダムを算出する関数
