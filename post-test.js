@@ -28,6 +28,6 @@ function dice(n) {
   return Math.floor(Math.random() * n) +1
 }
 
-// $>node dice.js
+// $>node post-test.js
 //アクセス
 //http://localhost:3000

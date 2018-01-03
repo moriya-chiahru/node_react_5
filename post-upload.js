@@ -1,5 +1,5 @@
-//282P
-//Postで値を表示する
+//283P
+//画像をアップロードする
 
 //Expressのモジュールを取り込んで作成
 const express = require('express')
