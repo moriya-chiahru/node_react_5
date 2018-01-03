@@ -1,6 +1,5 @@
 //280P
-//ルーティングを設定
-//正規表現を使ったルーティングのアクセス
+//クエリの内容を取得する
 
 //Expressのモジュールを取り込んで作成
 const express = require('express')
@@ -10,15 +9,14 @@ const portNo = 3000
 // URLに応じた処理を行う
 // ルートへのアクセス
 app.get('/', (req, res, next) => {
-  res.send('<p><a href="/dice/6">6面のサイコロ</a><br>' + 
-    '<a href="/dice/12">12面のサイコロ</a><br>')
-})
-
-// サイコロへのアクセス
-//正規表現:num
-app.get('/dice/:num', (req, res) => {
-  //取得する場合は req.params.num
-  res.send('今回の値は...' + dice(req.params.num))
+  //?q=数字 は　req.query.q　で取得できる
+  if(!req.query.q){
+    res.send('<p><a href="?q=6">6面のサイコロ</a><br>' + 
+      '<a href="?q=12">12面のサイコロ</a><br>')
+  } else {
+    const q = parseInt(req.query.q, 10)
+    res.send('今回の値は...' + dice(q))
+  }
 })
 
 //サイコロのランダムを算出する関数
